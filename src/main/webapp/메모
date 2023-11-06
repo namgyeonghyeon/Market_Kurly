@@ -1,0 +1,112 @@
+drop table userdata;
+create table userdata(
+	no number primary key,
+	id varchar2(20) not null,
+	passwd varchar2(10) not null,
+  passwdcheck varchar2(10) not null,
+	name varchar2(15) not null,
+	email varchar2(20),
+	tel1 varchar2(9) not null,
+	tel2 varchar2(9) not null,
+	tel3 varchar2(9) not null,
+  job varchar2(20)
+);
+
+drop sequence user_seq;
+create sequence suser_seq
+	increment by 1
+	start with 1 
+	minvalue 1
+	maxvalue 10000
+	nocache;
+
+insert into user(no,id,passwd,passwdcheck,name,email,tel1,tel2,tel3,job)
+values(user_seq.nextval,'test','1234','1234','태연','010','1234','5678','개발자');
+
+commit;
+
+select * from userdata;
+
+drop table kurlypro;
+create table kurlypro(
+	pnum number primary key,
+	ptitle varchar2(50) not null,
+	pname varchar2(20) not null,
+  proimg varchar2(20) not null,
+	count number not null,
+	price number not null,
+  packaging varchar2(10) not null,
+  origin varchar2(20) not null, --원산지
+  viewer number --조회수
+);
+--insert into kurlypro values(kulprod.nextval,'망고','망고','ㅇ',50,1000,'포장','국산',0);
+
+select * from kurlypro; 
+select * from product;
+select * from kurlypro where viewer >= 10 order by viewer desc;
+
+drop sequence kulprod;
+create sequence kulprod
+	increment by 1
+	start with 1 
+	minvalue 1
+	maxvalue 10000
+	nocache;
+
+commit;
+
+select * from userdata;
+
+drop table orderdata;
+create table orderdata(
+	orderId number primary key,
+  memno number not null,
+  pnum number not null,
+  qty number not null,
+	ptitle varchar2(50) not null,
+  proimg varchar2(20) not null,
+	price number not null,
+  packaging varchar2(10) not null,
+  origin varchar2(20) not null,
+  buy_date date not null
+);
+
+drop sequence order_seq;
+create sequence order_seq
+	increment by 1
+	start with 1 
+	minvalue 1
+	maxvalue 10000
+	nocache;
+
+commit;
+select m.no, m.name, m.id, p.pname, o.qty, o.amount, o.memno from (members m inner join orders o on m.no = o.memno)inner join product p on o.pnum = p.pnum where id = 'admin';
+select m.no, m.name, m.id, p.ptitle, p.proimg,p.price, o.qty, o.buy_date, o.memno from (userdata m inner join orderdata o on m.no = o.memno)inner join kurlypro p on o.pnum = p.pnum where id = 'asd';
+
+select * from orderdata;
+select * from orders;
+
+drop table review;
+create table review( 
+	num number not null primary key,
+	passwd varchar2(12) not null,
+  writer varchar2(20) not null,
+  subject varchar2(20) not null,
+	reg_date date not null,
+	readcount int default 0,
+	ref number not null,
+	re_step number not null,
+	re_level number not null,
+	content varchar2(200) not null
+);
+
+drop sequence review_seq;
+create sequence review_seq
+  increment by 1
+  start with 1
+  minvalue 1
+  maxvalue 10000
+  nocache;
+
+commit;
+select * from review;
