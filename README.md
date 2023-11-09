@@ -21,6 +21,8 @@
 
 <img width="1265" alt="스크린샷 2023-11-07 173125" src="https://github.com/namgyeonghyeon/jsp_kurly/assets/129054045/0b9f77a2-2ba5-42ab-bd4c-bc05ecf67074">
 
+이페이지의 경우 viewer라는 값을 0으로 설정해 한번씩 들어갈때마다 1씩 증가시켜 viewer가 10이상의 값들을 viewer가 높은순으로 등수를 매겨 출력함
+
 <img width="1257" alt="스크린샷 2023-11-07 173131" src="https://github.com/namgyeonghyeon/jsp_kurly/assets/129054045/9bdeadd7-a827-4cbe-81b3-ea7408ad3824">
 
 <img width="1265" alt="스크린샷 2023-11-07 173136" src="https://github.com/namgyeonghyeon/jsp_kurly/assets/129054045/1d11f7eb-abb8-4b0b-9e58-fb787a0ae41d">
